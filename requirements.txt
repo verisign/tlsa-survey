@@ -1,0 +1,4 @@
+python>=2.5
+dnspython==1.12.0
+M2Crypto==0.21.1
+pysqlite==2.6.3
