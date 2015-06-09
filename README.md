@@ -48,6 +48,18 @@ Usage:
 
     Results of the survey are placed into an sqlite3 database.
 
+    This code validates if the TLSA record matches the certificate
+    received from server based on the cert usage, selector and
+    matching type in TLSA records. (Usage 0 is not verified since it
+    may constrain the PKIX validation to a specific CA)
+
+    This code does not validate the certificate through PKIX
+    certificate chains, for example,
+    * no attempt is made to verify the integrity of the certificate chain
+    * no checks on hostname in the certificate
+    * no checks are made against any public CA
+    * no checks on certificate expiration
+
 References:
 
     The tlsa-survey tool (aka PryDane) is described in "Measuring DANE
