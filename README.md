@@ -18,6 +18,8 @@ Usage:
 
     Where list-of-domains is a text file containing domains to be tested
     for the presence of TLSA records.
+    
+Operation:    
 
     For each input domain, the script issues queries for names most
     likely to have associated TLSA records.  These include:
@@ -47,6 +49,8 @@ Usage:
     _5269._tcp.xmpp.$domain
 
     Results of the survey are placed into an sqlite3 database.
+    
+Validation:    
 
     This code validates if the TLSA record matches the certificate
     received from server based on the cert usage, selector and
