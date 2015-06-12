@@ -14,10 +14,10 @@ Dependencies:
 
 Usage:
 
-    $ sh tlsa_survey.sh list-of-domains
+    $ sh tlsa_survey.sh list-of-domains name-server
 
     Where list-of-domains is a text file containing domains to be tested
-    for the presence of TLSA records.
+    for the presence of TLSA records and name-server is a DNS server name or IP.
     
 Operation:    
 
