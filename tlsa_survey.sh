@@ -34,7 +34,7 @@ if test $# -lt 1 ; then
 	echo "usage: $0 list nameserver" 1>&2
 	exit 1
 fi
-DOMAIN_LIST=$1 ; shift
+DOMAIN_LIST=$1
 NAME_SERVER=$2 ; shift
 
 DATE=`date +%Y-%m-%d`
