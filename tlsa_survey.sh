@@ -30,7 +30,7 @@
 
 set -e
 
-if test $# -lt 1 ; then
+if test $# -lt 2 ; then
 	echo "usage: $0 list nameserver" 1>&2
 	exit 1
 fi
