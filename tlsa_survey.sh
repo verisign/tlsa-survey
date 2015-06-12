@@ -31,7 +31,7 @@
 set -e
 
 if test $# -lt 1 ; then
-	echo "usage: $0 input" 1>&2
+	echo "usage: $0 list [nameserver]" 1>&2
 	exit 1
 fi
 INPUT=$1 ; shift
