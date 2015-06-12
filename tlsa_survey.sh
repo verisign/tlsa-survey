@@ -30,11 +30,12 @@
 
 set -e
 
-if test $# -lt 1 ; then
-	echo "usage: $0 input" 1>&2
+if test $# -lt 2 ; then
+	echo "usage: $0 list-of-domains name-server" 1>&2
 	exit 1
 fi
-INPUT=$1 ; shift
+DOMAIN_LIST=$1 ; shift
+NAME_SERVER=$2 ; shift
 
 DATE=`date +%Y-%m-%d`
 SCRIPT_DIR=`dirname $0`
@@ -46,7 +47,7 @@ THREAD_NUM="20"
 # script to get server certs using openssl
 CERT_SCRIPT="$SCRIPT_DIR/get_serv_cert.sh"
 
-cat $INPUT | python $SCRIPT_DIR/tlsa_survey.py -d -s 127.0.0.1:53 -t $THREAD_NUM -o $DB -c $CERT_SCRIPT
+cat $DOMAIN_LIST | python $SCRIPT_DIR/tlsa_survey.py -d -s $NAME_SERVER:53 -t $THREAD_NUM -o $DB -c $CERT_SCRIPT
 
 # get tlsa zone and dnssec zone number
 python $SCRIPT_DIR/dnssec_tlsa_zone_num.py -i $DATA_DIR/dnssec_tlsa_zone_num.db -d $DATE -n 0 -p $SCRIPT_DIR
