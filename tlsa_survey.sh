@@ -31,7 +31,7 @@
 set -e
 
 if test $# -lt 2 ; then
-	echo "usage: $0 list nameserver" 1>&2
+	echo "usage: $0 domainlist nameserver" 1>&2
 	exit 1
 fi
 DOMAIN_LIST=$1
