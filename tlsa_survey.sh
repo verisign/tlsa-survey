@@ -34,7 +34,8 @@ if test $# -lt 1 ; then
 	echo "usage: $0 list nameserver" 1>&2
 	exit 1
 fi
-INPUT=$1 ; shift
+DOMAIN_LIST=$1 ; shift
+NAME_SERVER=$2 ; shift
 
 DATE=`date +%Y-%m-%d`
 SCRIPT_DIR=`dirname $0`
@@ -42,12 +43,11 @@ DATA_DIR="data"
 mkdir -p $DATA_DIR
 DB="$DATA_DIR/stats.$DATE.db"
 THREAD_NUM="20"
-NSSERVER=$2
 
 # script to get server certs using openssl
 CERT_SCRIPT="$SCRIPT_DIR/get_serv_cert.sh"
 
-cat $INPUT | python $SCRIPT_DIR/tlsa_survey.py -d -s $NSSERVER:53 -t $THREAD_NUM -o $DB -c $CERT_SCRIPT
+cat $DOMAIN_LIST | python $SCRIPT_DIR/tlsa_survey.py -d -s $NAME_SERVER:53 -t $THREAD_NUM -o $DB -c $CERT_SCRIPT
 
 # get tlsa zone and dnssec zone number
 python $SCRIPT_DIR/dnssec_tlsa_zone_num.py -i $DATA_DIR/dnssec_tlsa_zone_num.db -d $DATE -n 0 -p $SCRIPT_DIR
